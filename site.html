@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somos coisa de alma amor</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: linear-gradient(135deg, green, purple);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+        }
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .days {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .time {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        .image-container {
+            margin-bottom: 20px;
+            border: 5px solid white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        h1 {
+            font-size: 1.8rem;
+        }
+        @media (max-width: 600px) {
+            .date {
+                font-size: 1.2rem;
+            }
+            .days {
+                font-size: 2rem;
+            }
+            .time {
+                font-size: 1.2rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="nois.jpeg" alt="Imagem substituível">
+        </div>
+        <h1>Somos apenas um desde:</h1>
+        <div class="date">19/10/2024</div>
+        <div class="days" id="daysCounter">0</div>
+        <div class="time" id="timeCounter">0 horas, 0 minutos e 0 segundos</div>
+    </div>
+
+    <script>
+        function calcularTempo() {
+            const dataInicial = new Date("2024-10-19");
+            const agora = new Date();
+            const diferenca = agora - dataInicial;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor(diferenca / (1000 * 60 * 60));
+            const minutos = Math.floor(diferenca / (1000 * 60));
+            const segundos = Math.floor(diferenca / 1000);
+
+            document.getElementById("daysCounter").textContent = `${dias} dias`;
+            document.getElementById("timeCounter").textContent = `${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+        }
+
+        setInterval(calcularTempo, 1000);
+        calcularTempo();
+    </script>
+</body>
+</html>
